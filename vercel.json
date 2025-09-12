@@ -1,15 +1,27 @@
 {
+  "version": 2,
   "builds": [
     {
-      "src": "manage.py",
+      "src": "trucklog_backend/wsgi.py",
       "use": "@vercel/python",
-      "config": { "maxLambdaSize": "15mb", "runtime": "python3.8" }
+      "config": {"maxLambdaSize": "15mb", "runtime": "python3.x"}
+    },
+    {
+      "src": "build_files.sh",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "staticfiles"
+      }
     }
   ],
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "manage.py"
+      "dest": "trucklog_backend/wsgi.py"
+    },
+    {
+      "src": "/static/(.*)",
+      "dest": "/static/$1"
     }
   ]
 }
