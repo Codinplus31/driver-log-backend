@@ -23,7 +23,7 @@ DEBUG = True
 
 # DEBUG = os.environ.get("DEBUG") != "False"
 
-ALLOWED_HOSTS = [".vercel.app", ".now.sh"]
+ALLOWED_HOSTS = ["127.0.0.1",".vercel.app", ".now.sh"]
 
 
 
@@ -130,3 +130,8 @@ CORS_ALLOW_HEADERS = [
     'x-requested-with',
 
 ]
+
+
+
+STATICFILES_DIRS = os.path.join(BASE_DIR, 'static'),
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
