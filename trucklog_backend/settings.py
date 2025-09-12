@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/5.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -19,11 +19,16 @@ SECRET_KEY = 'django-insecure-ubm+p_c(%+bm#2mtz32c@@70^7_uvc&i^_1qtl8xp4wg!607u&
 
 DEBUG = True
 
-ALLOWED_HOSTS = []
+# SECRET_KEY = os.environ.get("SECRET_KEY")
+
+# DEBUG = os.environ.get("DEBUG") != "False"
+
+ALLOWED_HOSTS = [".vercel.app", ".now.sh"]
 
 
 
 INSTALLED_APPS = [
+    "whitenoise.runserver_nostatic",
     'corsheaders',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -37,6 +42,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -122,4 +128,5 @@ CORS_ALLOW_HEADERS = [
     'user-agent',
     'x-csrftoken',
     'x-requested-with',
+
 ]
