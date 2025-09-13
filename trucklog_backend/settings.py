@@ -23,7 +23,7 @@ DEBUG = True
 
 # DEBUG = os.environ.get("DEBUG") != "False"
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['.onrender.com']
 
 
 
@@ -128,6 +128,7 @@ CORS_ALLOW_HEADERS = [
     'x-requested-with',
 
 ]
+
 
 
 
